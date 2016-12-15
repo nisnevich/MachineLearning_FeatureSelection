@@ -1,0 +1,55 @@
+"C:\Program Files\Java\jdk1.8.0_60\bin\java" -agentlib:jdwp=transport=dt_socket,address=127.0.0.1:59893,suspend=y,server=n -Dfile.encoding=UTF-8 -classpath "C:\Program Files\Java\jdk1.8.0_60\jre\lib\charsets.jar;C:\Program Files\Java\jdk1.8.0_60\jre\lib\deploy.jar;C:\Program Files\Java\jdk1.8.0_60\jre\lib\ext\access-bridge-64.jar;C:\Program Files\Java\jdk1.8.0_60\jre\lib\ext\cldrdata.jar;C:\Program Files\Java\jdk1.8.0_60\jre\lib\ext\dnsns.jar;C:\Program Files\Java\jdk1.8.0_60\jre\lib\ext\jaccess.jar;C:\Program Files\Java\jdk1.8.0_60\jre\lib\ext\jfxrt.jar;C:\Program Files\Java\jdk1.8.0_60\jre\lib\ext\localedata.jar;C:\Program Files\Java\jdk1.8.0_60\jre\lib\ext\nashorn.jar;C:\Program Files\Java\jdk1.8.0_60\jre\lib\ext\sunec.jar;C:\Program Files\Java\jdk1.8.0_60\jre\lib\ext\sunjce_provider.jar;C:\Program Files\Java\jdk1.8.0_60\jre\lib\ext\sunmscapi.jar;C:\Program Files\Java\jdk1.8.0_60\jre\lib\ext\sunpkcs11.jar;C:\Program Files\Java\jdk1.8.0_60\jre\lib\ext\zipfs.jar;C:\Program Files\Java\jdk1.8.0_60\jre\lib\javaws.jar;C:\Program Files\Java\jdk1.8.0_60\jre\lib\jce.jar;C:\Program Files\Java\jdk1.8.0_60\jre\lib\jfr.jar;C:\Program Files\Java\jdk1.8.0_60\jre\lib\jfxswt.jar;C:\Program Files\Java\jdk1.8.0_60\jre\lib\jsse.jar;C:\Program Files\Java\jdk1.8.0_60\jre\lib\management-agent.jar;C:\Program Files\Java\jdk1.8.0_60\jre\lib\plugin.jar;C:\Program Files\Java\jdk1.8.0_60\jre\lib\resources.jar;C:\Program Files\Java\jdk1.8.0_60\jre\lib\rt.jar;C:\Users\Arseniy\IdeaProjects\FeatureSelection\target\classes;C:\Program Files\Weka-3-8\weka.jar;C:\Users\Arseniy\.m2\repository\org\apache\commons\commons-lang3\3.5\commons-lang3-3.5.jar;C:\Program Files (x86)\JetBrains\IntelliJ IDEA 2016.2\lib\idea_rt.jar" Main
+Connected to the target VM, address: '127.0.0.1:59893', transport: 'socket'
+Feature selection, step #1. Using CorrelationAttributeEval.
+Done.
+
+Feature selection, step #2. Using InfoGainAttributeEval.
+Done.
+
+Classification, step #1. Using CorrelationAttributeEval.
+------------------- Removed 0% attributes -------------------
+------------------- Removed 10% attributes -------------------
+------------------- Removed 20% attributes -------------------
+------------------- Removed 30% attributes -------------------
+------------------- Removed 40% attributes -------------------
+------------------- Removed 50% attributes -------------------
+------------------- Removed 60% attributes -------------------
+------------------- Removed 70% attributes -------------------
+------------------- Removed 80% attributes -------------------
+------------------- Removed 90% attributes -------------------
+=== Summary ===
+
+Correctly Classified Instances          87               87      %
+Incorrectly Classified Instances        13               13      %
+Kappa statistic                          0.7381
+Mean absolute error                      0.13
+Root mean squared error                  0.3606
+Relative absolute error                 26.3723 %
+Root relative squared error             72.6357 %
+Total Number of Instances              100
+
+Classification, step #2. Using InfoGainAttributeEval.
+------------------- Removed 0% attributes -------------------
+------------------- Removed 10% attributes -------------------
+------------------- Removed 20% attributes -------------------
+------------------- Removed 30% attributes -------------------
+------------------- Removed 40% attributes -------------------
+------------------- Removed 50% attributes -------------------
+------------------- Removed 60% attributes -------------------
+------------------- Removed 70% attributes -------------------
+------------------- Removed 80% attributes -------------------
+------------------- Removed 90% attributes -------------------
+Disconnected from the target VM, address: '127.0.0.1:59893', transport: 'socket'
+=== Summary ===
+
+Correctly Classified Instances          87               87      %
+Incorrectly Classified Instances        13               13      %
+Kappa statistic                          0.7381
+Mean absolute error                      0.13
+Root mean squared error                  0.3606
+Relative absolute error                 26.3723 %
+Root relative squared error             72.6357 %
+Total Number of Instances              100
+
+
+Process finished with exit code 0

@@ -32,8 +32,7 @@ public abstract class FeatureSelectionAbstractController {
         }
     }
 
-    protected void classify(List<Classifier> classifiers, Instances train, Instances test)
-            throws Exception {
+    protected void classify(List<Classifier> classifiers, Instances train, Instances test) throws Exception {
         for (int i = 0; i < classifiers.size(); i++) {
             Classifier classifier = classifiers.get(i);
             System.out.println("******** Using classifier " +
