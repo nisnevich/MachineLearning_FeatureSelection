@@ -10,7 +10,9 @@ import java.util.List;
  */
 public interface FeatureSelectionModel {
 
+    int DEFAULT_FOLDS_COUNT = 10;
+
     List<Integer> rankAttributes(Instances data) throws Exception;
 
-    String toString();
+    void setFoldsCount(int foldsCount);
 }

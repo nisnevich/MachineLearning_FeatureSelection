@@ -1,6 +1,7 @@
-package controller.impl;
+package controller.impl.old;
 
 import controller.FeatureSelectionController;
+import controller.impl.FeatureSelectionAbstractController;
 import model.fs.impl.CorellationFeatureSelectionModel;
 import model.fs.impl.WrapperAttributeFeatureSelectionModel;
 import util.ClassifierUtil;
@@ -13,6 +14,9 @@ import java.util.Collections;
 import java.util.List;
 
 /**
+ * Reads ranked attributes list from file system.
+ * Cuts specified percent of dataset attributes, writes results to file.
+ *
  * @author Nisnevich Arseniy
  * @version 1.0 (30.11.2016)
  */

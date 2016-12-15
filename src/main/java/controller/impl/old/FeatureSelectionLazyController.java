@@ -1,6 +1,7 @@
-package controller.impl;
+package controller.impl.old;
 
 import controller.FeatureSelectionController;
+import controller.impl.FeatureSelectionAbstractController;
 import model.fs.FeatureSelectionModel;
 import model.fs.impl.CorellationFeatureSelectionModel;
 import model.fs.impl.InfoGainFeatureSelectionModel;
@@ -17,6 +18,10 @@ import java.util.Collections;
 import java.util.List;
 
 /**
+ * Iterates over ranked attributes lists provided by different FS methods.
+ * Removes one attribute per iteration (=> very slow).
+ * Results are written to console.
+ *
  * @author Nisnevich Arseniy
  * @version 1.0 (30.11.2016)
  */

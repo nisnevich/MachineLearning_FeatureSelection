@@ -1,8 +1,9 @@
 import controller.FeatureSelectionController;
-import controller.impl.FeatureSelectionCutController;
-import controller.impl.FeatureSelectionFastController;
-import controller.impl.FeatureSelectionLazyController;
-import controller.impl.FeatureSelectionRemovalController;
+import controller.impl.FeatureSelectionControllerImpl;
+import controller.impl.old.FeatureSelectionCutController;
+import controller.impl.old.FeatureSelectionFastController;
+import controller.impl.old.FeatureSelectionLazyController;
+import controller.impl.old.FeatureSelectionRemovalController;
 
 /**
  * @author Nisnevich Arseniy
@@ -10,10 +11,11 @@ import controller.impl.FeatureSelectionRemovalController;
  */
 public class Main {
 
-    private static RunMode runMode = RunMode.REMOVAL;
+    private static RunMode runMode = RunMode.NORMAL;
 
-    private enum RunMode {FAST, LAZY, CUT, REMOVAL}
+    private enum RunMode {NORMAL, FAST, LAZY, CUT, REMOVAL}
 
+    private static FeatureSelectionController featureSelectionNormalController = new FeatureSelectionControllerImpl();
     private static FeatureSelectionLazyController featureSelectionLazyController = new FeatureSelectionLazyController();
     private static FeatureSelectionFastController featureSelectionFastController = new FeatureSelectionFastController();
     private static FeatureSelectionCutController featureSelectionCutController = new FeatureSelectionCutController();
@@ -24,6 +26,9 @@ public class Main {
         FeatureSelectionController controllerInstance;
 
         switch (runMode) {
+            case NORMAL:
+                controllerInstance = featureSelectionNormalController;
+                break;
             case FAST:
                 controllerInstance = featureSelectionFastController;
                 break;

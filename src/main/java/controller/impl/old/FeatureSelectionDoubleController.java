@@ -1,6 +1,7 @@
-package controller.impl;
+package controller.impl.old;
 
 import controller.FeatureSelectionController;
+import controller.impl.FeatureSelectionAbstractController;
 import model.fs.impl.CorellationFeatureSelectionModel;
 import model.fs.impl.WrapperAttributeFeatureSelectionModel;
 import util.ClassifierUtil;
@@ -8,7 +9,8 @@ import util.FileSystemUtil;
 import weka.core.Instances;
 
 /**
- * Concats different FS results
+ * Concats results of different FS methods.
+ *
  * @author Nisnevich Arseniy
  * @version 1.0 (08.12.2016)
  */

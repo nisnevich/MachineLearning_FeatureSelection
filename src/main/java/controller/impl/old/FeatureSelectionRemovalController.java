@@ -1,6 +1,7 @@
-package controller.impl;
+package controller.impl.old;
 
 import controller.FeatureSelectionController;
+import controller.impl.FeatureSelectionAbstractController;
 import util.ClassifierUtil;
 import util.FileSystemUtil;
 import weka.classifiers.AbstractClassifier;
@@ -42,7 +43,7 @@ public class FeatureSelectionRemovalController extends FeatureSelectionAbstractC
     }
 
     @Override
-    void classify(List<AbstractClassifier> classifiers, Instances trainDataset) throws Exception {
+    protected void classify(List<AbstractClassifier> classifiers, Instances trainDataset) throws Exception {
         for (AbstractClassifier classifier : classifiers) {
             classifier.buildClassifier(trainDataset);
         }

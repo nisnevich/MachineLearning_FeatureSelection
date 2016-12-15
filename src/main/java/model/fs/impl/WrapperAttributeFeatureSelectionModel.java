@@ -1,11 +1,13 @@
 package model.fs.impl;
 
 import model.fs.FeatureSelectionModel;
-import weka.attributeSelection.*;
+import weka.attributeSelection.AttributeSelection;
+import weka.attributeSelection.BestFirst;
+import weka.attributeSelection.WrapperSubsetEval;
 import weka.classifiers.trees.J48;
 import weka.core.Instances;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -13,6 +15,8 @@ import java.util.List;
  * @version 1.0 (07.12.2016)
  */
 public class WrapperAttributeFeatureSelectionModel implements FeatureSelectionModel {
+
+    private int foldsCount = DEFAULT_FOLDS_COUNT;
 
     @Override
     public List<Integer> rankAttributes(Instances data) throws Exception {
@@ -31,13 +35,13 @@ public class WrapperAttributeFeatureSelectionModel implements FeatureSelectionMo
         searchMethod.setSearchTermination(5);
 
         AttributeSelection selector = new AttributeSelection();
-        selector.setFolds(10);
+        selector.setFolds(foldsCount);
         selector.setEvaluator(evaluator);
         selector.setSearch(searchMethod);
         selector.SelectAttributes(data);
 
         int[] attrArray = selector.selectedAttributes();
-        List<Integer> attrList = new ArrayList<>();
+        List<Integer> attrList = new LinkedList<>();
         // Convert to list
         for (int anAttrArray : attrArray) {
             attrList.add(anAttrArray - 1);
@@ -48,6 +52,11 @@ public class WrapperAttributeFeatureSelectionModel implements FeatureSelectionMo
 
     @Override
     public String toString() {
-        return "This feature selection model uses WrapperSubsetEval";
+        return "Using WrapperSubsetEval";
+    }
+
+    @Override
+    public void setFoldsCount(int foldsCount) {
+        this.foldsCount = foldsCount;
     }
 }

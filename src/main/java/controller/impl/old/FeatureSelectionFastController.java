@@ -1,6 +1,7 @@
-package controller.impl;
+package controller.impl.old;
 
 import controller.FeatureSelectionController;
+import controller.impl.FeatureSelectionAbstractController;
 import util.ClassifierUtil;
 import util.FileSystemUtil;
 import weka.classifiers.AbstractClassifier;
@@ -12,12 +13,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * Reads ranked attributes list from file system.
+ * For all list removes concrete percent of attributes, then classifies, until list will not over.
+ *
  * @author Nisnevich Arseniy
  * @version 1.0 (30.11.2016)
  */
 public class FeatureSelectionFastController extends FeatureSelectionAbstractController
         implements FeatureSelectionController {
 
+    private static final double REMOVE_PORTION = 1/10;
     private FileSystemUtil fileSystemUtil = new FileSystemUtil();
     private ClassifierUtil classifierUtil = new ClassifierUtil();
 
@@ -48,10 +53,10 @@ public class FeatureSelectionFastController extends FeatureSelectionAbstractCont
         int removedAttrCount = 0;
         for (int i = dataset.numAttributes() - 2; i >= 0; i--) {
             if (! rankedList.contains(i + 1)) {
-                if (removedAttrCount != 0 && removedAttrCount % (attrToRemoveCount / 10) == 0) {
+                if (removedAttrCount != 0 && removedAttrCount % (attrToRemoveCount * REMOVE_PORTION) == 0) {
                     System.out.println(String.format(
                             "------------------- Removed %d0%% attributes -------------------",
-                            removedAttrCount / (attrToRemoveCount / 10)));
+                            removedAttrCount / (attrToRemoveCount * REMOVE_PORTION)));
                     classify(classifiers, dataset);
                 }
                 dataset.deleteAttributeAt(i);
