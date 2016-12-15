@@ -4,6 +4,7 @@ import controller.FeatureSelectionController;
 import model.fs.FeatureSelectionModel;
 import model.fs.impl.CorellationFeatureSelectionModel;
 import model.fs.impl.InfoGainFeatureSelectionModel;
+import model.fs.impl.SymmetricalUncertSelectionModel;
 import util.ClassifierUtil;
 import util.FileSystemUtil;
 import weka.classifiers.Classifier;
@@ -60,7 +61,7 @@ public class BackwardFeatureSelectionController extends FeatureSelectionAbstract
         List<FeatureSelectionModel> featureSelectionModels = new ArrayList<>();
         featureSelectionModels.add(new CorellationFeatureSelectionModel());
         featureSelectionModels.add(new InfoGainFeatureSelectionModel());
-//        featureSelectionModels.add(new SymmetricalUncertSelectionModel());
+        featureSelectionModels.add(new SymmetricalUncertSelectionModel());
 //        featureSelectionModels.add(new WrapperAttributeFeatureSelectionModel());
 
         List<List<Integer>> listOfRankedLists = calculateRankedLists(trainDataset, featureSelectionModels);
@@ -127,6 +128,9 @@ public class BackwardFeatureSelectionController extends FeatureSelectionAbstract
                 classify(classifiers, trainDataset, testDataset);
             }
 
+            bestTrainList.add(bestTrain);
+            bestTestList.add(bestTest);
+
 //            System.out.println();
 //            System.out.println(bestInfo);
         }
@@ -141,21 +145,13 @@ public class BackwardFeatureSelectionController extends FeatureSelectionAbstract
         bestResult = 0;
         classify(classifiers, trainInstance, testInstance);
         System.out.println(bestInfo);
-
-//        for (int attrIndex = trainDataset.numAttributes() - 2; attrIndex >= 0; attrIndex--) {
-//            if (!rankedList.contains(1 + attrIndex)) {
-//                trainDataset.deleteAttributeAt(attrIndex);
-//                testDataset.deleteAttributeAt(attrIndex);
-//                removedAttrCount++;
-//            }
-//        }
     }
 
     private Instances mergeInstances(List<Instances> instancesList) {
         Instances result = null;
-        for (int i = 0; i < instancesList.size() - 1; i++) {
-            Instances first = instancesList.get(i);
-            Instances second = instancesList.get(i + 1);
+//        for (int i = 0; i < instancesList.size() - 1; i++) {
+            Instances first = instancesList.get(0);
+            Instances second = instancesList.get(1);
 
             result = new Instances(first);
 
@@ -165,7 +161,7 @@ public class BackwardFeatureSelectionController extends FeatureSelectionAbstract
                     result.deleteAttributeAt(j);
                 }
             }
-        }
+//        }
         return result;
     }
 
@@ -200,7 +196,6 @@ public class BackwardFeatureSelectionController extends FeatureSelectionAbstract
     private List<Classifier> createClassifiers() {
         List<Classifier> classifiers = new ArrayList<>();
         SMO svm = new SMO();
-//        NaiveBayes naiveBayes = new NaiveBayes();
 
         classifiers.add(svm);
 
@@ -219,8 +214,6 @@ public class BackwardFeatureSelectionController extends FeatureSelectionAbstract
                 bestTest = test;
                 bestTrain = train;
                 bestInfo = eval.toSummaryString(false);
-                bestTrainList.add(bestTrain);
-                bestTestList.add(bestTest);
             }
 
             classifiers.set(i, classifier.getClass().newInstance());
