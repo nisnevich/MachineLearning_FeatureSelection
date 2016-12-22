@@ -50,8 +50,12 @@ public class BackwardFeatureSelectionController extends FeatureSelectionAbstract
 
     public void start() throws Exception {
         // Reading dataset
-        String trainDatasetPath = "dataset\\arcene_train.arff";
-        String testDatasetPath = "dataset\\arcene_valid.arff";
+//        String trainDatasetPath = "dataset\\arcene_train.arff";
+//        String testDatasetPath = "dataset\\arcene_valid.arff";
+
+        String trainDatasetPath = "datasetmerged\\merged.train.4.arff";
+        String testDatasetPath = "datasetmerged\\merged.test.4.arff";
+
         Instances trainDataset = new Instances(fileSystemUtil.readDataSet(trainDatasetPath));
         trainDataset.setClassIndex(trainDataset.numAttributes() - 1);
         Instances testDataset = new Instances(fileSystemUtil.readDataSet(testDatasetPath));
@@ -149,7 +153,7 @@ public class BackwardFeatureSelectionController extends FeatureSelectionAbstract
 
     private Instances mergeInstances(List<Instances> instancesList) {
         Instances result = null;
-//        for (int i = 0; i < instancesList.size() - 1; i++) {
+        for (int i = 0; i < instancesList.size() - 1; i++) {
             Instances first = instancesList.get(0);
             Instances second = instancesList.get(1);
 
@@ -161,7 +165,7 @@ public class BackwardFeatureSelectionController extends FeatureSelectionAbstract
                     result.deleteAttributeAt(j);
                 }
             }
-//        }
+        }
         return result;
     }
 
